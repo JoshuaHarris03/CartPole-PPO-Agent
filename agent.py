@@ -9,4 +9,7 @@ import numpy as np
 
 # Create environment
 env = gym.make("CartPole-v1")
-env = DummyVecEnv([lambda: env])
+env = DummyVecEnv([lambda: env]) # Wrap for vectorised env
+
+# Initialise PPO model with MLP policy
+model = PPO("MlpPolicy", env, verbose=1, learning_rate=0.0003, n_steps=2048, batch_size=64)
